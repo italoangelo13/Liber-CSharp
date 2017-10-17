@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <footer class="row" style="height:50px; background-color:#1f1e1e">
+        <footer class="row" style="height:70px; background-color:#1f1e1e">
             <h4 style="color:#fff;">@Liber</h4>
         </footer>
     </div>
