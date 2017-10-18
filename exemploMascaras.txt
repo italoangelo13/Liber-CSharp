@@ -1,0 +1,4 @@
+﻿onKeydown="Mascara(this,Hora);"
+OnKeyDown = "MaxLenght(this,254)"
+Mascara(this,Data);
+<script src="../Mascaras.js"></script>
