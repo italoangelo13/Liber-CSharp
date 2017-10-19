@@ -7,15 +7,9 @@
     <title>LIBER</title>
     <link href="../Assets/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../Assets/js/Mascaras.js"></script>
+    <script src="https://use.fontawesome.com/99f7fad4a9.js"></script>
     <style type="text/css">
-        .auto-style1 {
-            height: 26px;
-        }
-
-        .auto-style2 {
-            height: 29px;
-        }
-
+        
         .upper-case {
             text-transform: uppercase;
         }
@@ -37,11 +31,14 @@
                 <div class="col-12 col-lg-12">
                     <fieldset>
                         <legend class="alert alert-success">Dados do Usuario</legend>
-                        <div class="form-group form-row">
+                        <asp:Button ID="_btnSalvar" runat="server" Text="Salvar Informações" CssClass="btn btn-success btn-lg" ValidationGroup="_validacaoCampos" OnClick="_btnSalvar_Click" />
+                        <asp:ValidationSummary ID="_boxValida" runat="server" ValidationGroup="_validacaoCampos" HeaderText="Campos Obrigatórios" ShowMessageBox="True" ShowSummary="False"/>
+                        <div class="form-group form-row" style="margin-top: 10px;">
                             <div class="col-lg-6">
 
                                 <p>
-                                    <asp:TextBox ID="_edNome" runat="server" CssClass="form-control upper-case" Placeholder="Nome" title="Informe o seu nome!"></asp:TextBox>
+                                    <asp:TextBox ID="_edNome" runat="server" CssClass="form-control upper-case" Placeholder="nome" title="Informe o seu nome!"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="_validNome" runat="server" ErrorMessage="Campo de nome é obrigatorio." ControlToValidate="_edNome" ForeColor="#FF3300" SetFocusOnError="True" ValidationGroup="_validacaoCampos">*</asp:RequiredFieldValidator>
                                 </p>
                             </div>
 
@@ -56,6 +53,7 @@
 
                                 <p>
                                     <asp:TextBox ID="_edLogin" runat="server" CssClass="form-control upper-case" Placeholder="Login" title="Informe o seu login!"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="_validLogin" runat="server" ErrorMessage="Campo de Login é Obrigatorio." ControlToValidate="_edLogin" ForeColor="#FF3300" SetFocusOnError="True" ValidationGroup="_validacaoCampos">*</asp:RequiredFieldValidator>
                                 </p>
                             </div>
                         </div>
@@ -64,12 +62,14 @@
                             <div class="col-lg-4">
                                 <p>
                                     <asp:TextBox ID="_edSenha" runat="server" CssClass="form-control upper-case" TextMode="Password" Placeholder="Senha" title="Informe a sua senha!"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="_validSenha" runat="server" ErrorMessage="Campo de Senha é Obrigatório" ForeColor="#FF3300" SetFocusOnError="True" ValidationGroup="_validacaoCampos" ControlToValidate="_edSenha">*</asp:RequiredFieldValidator>
                                 </p>
                             </div>
 
                             <div class="col-lg-4">
                                 <p>
                                     <asp:TextBox ID="_edConfSenha" runat="server" CssClass="form-control upper-case" TextMode="Password" Placeholder="Confirmar Senha" title="Confirme a sua senha!"></asp:TextBox>
+                                    <asp:CompareValidator ID="_validConfirm" runat="server" ErrorMessage="Senhas Digitadas não Conferem." ControlToCompare="_edSenha" ControlToValidate="_edConfSenha" ForeColor="Red" SetFocusOnError="True" ValidationGroup="_validacaoCampos">*</asp:CompareValidator>
                                 </p>
                             </div>
 
@@ -114,27 +114,27 @@
                         <div class="form-row">
                             <div class="col-lg-3">
                                 <p>
-                                    <asp:TextBox ID="_edCPD" runat="server" CssClass="form-control upper-case" Placeholder="CPF" onKeydown="Mascara(this,Cpf);" title="Informe o seu CPF!"></asp:TextBox>
+                                    <asp:TextBox ID="_edCPF" runat="server" CssClass="form-control upper-case" Placeholder="CPF" onKeydown="Mascara(this,Cpf);" title="Informe o seu CPF!" MaxLength="14"></asp:TextBox>
                                 </p>
                             </div>
 
                             <div class="col-lg-3">
                                 <p>
-                                    <asp:TextBox ID="_edCep" runat="server" CssClass="form-control upper-case" Placeholder="Cep" onKeydown="Mascara(this,Cep);" title="Informe o seu Cep!"></asp:TextBox>
+                                    <asp:TextBox ID="_edCep" runat="server" CssClass="form-control upper-case" Placeholder="Cep" onKeydown="Mascara(this,Cep);" title="Informe o seu Cep!" MaxLength="9"></asp:TextBox>
                                 </p>
                             </div>
 
-                            <div class="col-lg-1">
+                            <div class="col-lg-2">
                                 <p>
-                                    <asp:DropDownList ID="_ddlUF" runat="server" CssClass="form-control upper-case" title="Informe a sua UF!">
+                                    <asp:DropDownList ID="_ddlUF" runat="server" CssClass="form-control upper-case" title="Informe a sua UF!" AutoPostBack="True" OnSelectedIndexChanged="_ddlUF_SelectedIndexChanged">
                                         <asp:ListItem Value="0">UF</asp:ListItem>
                                     </asp:DropDownList>
                                 </p>
                             </div>
 
-                            <div class="col-lg-5">
+                            <div class="col-lg-4">
                                 <p>
-                                    <asp:DropDownList ID="_ddlCidade" runat="server" CssClass="form-control upper-case" title="Informe a sua Cidade!">
+                                    <asp:DropDownList ID="_ddlCidade" runat="server" CssClass="form-control upper-case" title="Informe a sua Cidade!" Enabled="False">
                                         <asp:ListItem Value="0">Selecione uma Cidade</asp:ListItem>
                                     </asp:DropDownList>
                                 </p>
@@ -144,31 +144,35 @@
                         <div class="form-row">
                             <div class="col-lg-3">
                                 <p>
-                                    <asp:TextBox ID="_edBairro" runat="server" CssClass="form-control upper-case" Placeholder="bairro"  title="Informe o seu Bairro!"></asp:TextBox>
+                                    <asp:TextBox ID="_edBairro" runat="server" CssClass="form-control upper-case" Placeholder="bairro" title="Informe o seu Bairro!"></asp:TextBox>
                                 </p>
                             </div>
 
                             <div class="col-lg-4">
                                 <p>
-                                    <asp:TextBox ID="_edEndereco" runat="server" CssClass="form-control upper-case" Placeholder="Endereço"  title="Informe o seu Enderço!"></asp:TextBox>
+                                    <asp:TextBox ID="_edEndereco" runat="server" CssClass="form-control upper-case" Placeholder="Endereço" title="Informe o seu Enderço!"></asp:TextBox>
                                 </p>
                             </div>
 
                             <div class="col-lg-1">
                                 <p>
-                                    <asp:TextBox ID="_edNumero" runat="server" CssClass="form-control upper-case" Placeholder="Numero" onKeydown="Mascara(this,Integer);"  title="Informe o numero da sua residencia!"></asp:TextBox>
+                                    <asp:TextBox ID="_edNumero" runat="server" CssClass="form-control upper-case" Placeholder="Numero" onKeydown="Mascara(this,Integer);" title="Informe o numero da sua residencia!"></asp:TextBox>
                                 </p>
                             </div>
 
                             <div class="col-lg-4">
                                 <p>
-                                    <asp:TextBox ID="_edComplemento" runat="server" CssClass="form-control upper-case" Placeholder="Complemento"   title="Informe o complemento da sua residencia!"></asp:TextBox>
+                                    <asp:TextBox ID="_edComplemento" runat="server" CssClass="form-control upper-case" Placeholder="Complemento" title="Informe o complemento da sua residencia!"></asp:TextBox>
                                 </p>
                             </div>
                         </div>
                     </asp:Panel>
                 </div>
             </div>
+
+            <footer class="row" style="height:70px; background-color:#1f1e1e; margin-top: 10px;">
+            <h4 style="color:#fff;">@Liber</h4>
+        </footer>
 
         </div>
     </form>

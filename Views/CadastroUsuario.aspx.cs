@@ -1,16 +1,155 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Views_CadastroUsuario : System.Web.UI.Page
 {
+    BancoDados banco = new BancoDados();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            atualizaEstado();
+        }
     }
 
-    
+    protected void atualizaEstado()
+    {
+        banco.Query("SELECT UF_SIGLA FROM estado");
+        _ddlUF.DataSource = banco.ExecutarDataTable();
+        _ddlUF.DataTextField = "UF_SIGLA";
+        _ddlUF.DataValueField = "UF_SIGLA";
+        _ddlUF.DataBind();
+        _ddlUF.Items.Insert(0, new ListItem("Selecione uma UF", "0"));
+    }
+
+
+    protected void atualizaCidade(string uf)
+    {
+        banco.Query("SELECT MUN_CODIGO_IBGE, MUN_NOME FROM municipio WHERE MUN_UF = '" +uf+"'");
+        _ddlCidade.DataSource = banco.ExecutarDataTable();
+        _ddlCidade.DataTextField = "MUN_NOME";
+        _ddlCidade.DataValueField = "MUN_CODIGO_IBGE";
+        _ddlCidade.DataBind();
+        _ddlCidade.Items.Insert(0, new ListItem("Selecione uma Cidade", "0"));
+    }
+    protected void _ddlUF_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (_ddlUF.SelectedIndex == 0)
+        {
+            _ddlCidade.Enabled = false;
+            _ddlCidade.Items.Clear();
+            _ddlCidade.Items.Insert(0, new ListItem("Selecione uma Cidade", "0"));
+        }
+        else
+        {
+            _ddlCidade.Enabled = true;
+            atualizaCidade(_ddlUF.SelectedValue);
+        }
+    }
+    protected void _btnSalvar_Click(object sender, EventArgs e)
+    {
+        if (_ddlUF.SelectedIndex == 0)
+        {
+            new ShowMenssage(this, "Campo Obrigatório", "Informe a sua UF.");
+            _ddlUF.Focus();
+            return;
+        }
+
+        if (_ddlCidade.SelectedIndex == 0)
+        {
+            new ShowMenssage(this, "Campo Obrigatório", "Informe a sua Cidade.");
+            _ddlCidade.Focus();
+            return;
+        }
+
+        //----- Verifica se o Login Informado ja exise ---//
+        banco.Query(@"SELECT USU_LOGIN FROM USUARIO WHERE USU_LOGIN = '" + _edLogin.Text.ToUpper() + "'");
+        DataTable dt = banco.ExecutarDataTable();
+        if (dt.Rows.Count > 0)
+        {
+            new ShowMenssage(this, "Login já existe!", "Este Login ja esta cadastrado, favor informar outro.");
+            _edLogin.Focus();
+            return;
+        }
+
+
+
+        //----- Caadstrando Usuário ----//
+        banco.Query(@"insert into usuario (
+                                           PERFIL_USUARIO_PERF_CODIGO_ID, 
+                                           USU_NOME, 
+                                           USU_ENDERECO, 
+                                           USU_NUM_ENDERECO, 
+                                           USU_BAIRRO, 
+                                           USU_CIDADE, 
+                                           USU_UF, 
+                                           USU_CPF, 
+                                           USU_LOGIN, 
+                                           USU_SENHA, 
+                                           USU_EMAIL, 
+                                           USU_CEP, 
+                                           USU_TELEFONE, 
+                                           USU_CELULAR,
+                                           USU_COMPLETO) 
+                                   values 
+                                          (
+                                            ?PERFIL_USUARIO_PERF_CODIGO_ID, 
+                                            ?USU_NOME, 
+                                            ?USU_ENDERECO, 
+                                            ?USU_NUM_ENDERECO, 
+                                            ?USU_BAIRRO, 
+                                            ?USU_CIDADE, 
+                                            ?USU_UF, 
+                                            ?USU_CPF, 
+                                            ?USU_LOGIN, 
+                                            ?USU_SENHA, 
+                                            ?USU_EMAIL, 
+                                            ?USU_CEP, 
+                                            ?USU_TELEFONE, 
+                                            ?USU_CELULAR,
+                                            'N')");
+
+        banco.SetParametro("?PERFIL_USUARIO_PERF_CODIGO_ID", _rblPerfil.SelectedValue);
+        banco.SetParametro("?USU_NOME", _edNome.Text);
+        try
+        {
+            banco.SetParametro("?USU_ENDERECO", _edEndereco.Text);
+        }
+        catch
+        {
+            banco.SetParametroNull("?USU_ENDERECO");
+        }
+        
+
+        banco.SetParametro("?USU_NUM_ENDERECO", _edNumero.Text);
+        banco.SetParametro("?USU_BAIRRO", _edBairro.Text);
+        banco.SetParametro("?USU_CIDADE", _ddlCidade.SelectedValue);
+        banco.SetParametro("?USU_UF", _ddlUF.SelectedValue);
+        banco.SetParametro("?USU_CPF", _edCPF.Text);
+        banco.SetParametro("?USU_LOGIN", _edLogin.Text);
+        banco.SetParametro("?USU_SENHA", _edSenha.Text);
+        banco.SetParametro("?USU_EMAIL", _edEmail.Text);
+        banco.SetParametro("?USU_CEP", _edCep.Text);
+        banco.SetParametro("?USU_TELEFONE", _edTelefone.Text);
+        banco.SetParametro("?USU_CELULAR", _edCelular.Text);
+
+        try
+        {
+            banco.Executar();
+            new ShowMenssage(this, "Cadastro Realizado com sucesso.", "Aguarde alguns instantes para acessar sua conta.");
+            
+            Response.Redirect("../index.aspx");
+            Thread.Sleep(5000);
+        }
+        catch(Exception ex)
+        {
+            new ShowMenssage(this, "Erro ao Cadastrar - " + ex.Message, "Não foi Possivel Realizar o Cadastro, Tente Novamente");
+        }
+    }
 }

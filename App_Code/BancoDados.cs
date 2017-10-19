@@ -34,7 +34,7 @@ public class BancoDados
 
     public void Executar()
     {
-        using (MySqlConnection _conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaoMysql"].ConnectionString))
+        using (MySqlConnection _conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaoMysqlLocal"].ConnectionString))
         {
             _conn.Close();
             _conn.Open();
@@ -100,9 +100,10 @@ public class BancoDados
 
     public DataTable ExecutarDataTable()
     {
-        using (MySqlConnection _conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaoMysql"].ConnectionString))
+        using (MySqlConnection _conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaoMysqlLocal"].ConnectionString))
         {
             _conn.Close();
+            
             _conn.Open();
             _com.Connection = _conn;
             MySqlDataAdapter _adapter = new MySqlDataAdapter(_com);
