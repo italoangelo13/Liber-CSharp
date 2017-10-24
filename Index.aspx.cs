@@ -7,11 +7,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Index : System.Web.UI.Page
-{
+{  
     BancoDados banco = new BancoDados();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Application["nomeSistema"] = "Liber - Serviços De Qualidade";
+        this.Title = Application["nomeSistema"].ToString();
+        Session["autenticado"] = "N";
     }
     protected void _btnEntrar_Click(object sender, EventArgs e)
     {
@@ -41,7 +43,29 @@ public partial class Index : System.Web.UI.Page
                 String senha = dt.Rows[0]["USU_SENHA"].ToString().ToUpper();
                 if (senhainfo.Equals(senha.ToUpper()))
                 {
-
+                    Session["nomeUsuario"] = dt.Rows[0]["USU_NOME"].ToString().ToUpper();
+                    Session["codUsuario"] = dt.Rows[0]["USU_CODIGO_ID"].ToString().ToUpper();
+                    
+                    Session["autenticado"] = "S";
+                    string completo = dt.Rows[0]["USU_COMPLETO"].ToString().ToUpper();
+                    string perfil = dt.Rows[0]["PERFIL_USUARIO_PERF_CODIGO_ID"].ToString().ToUpper();
+                    Session["perfil"] = perfil;
+                    if (completo.Equals("S"))
+                    {
+                        if (perfil.Equals("1"))
+                        {
+                            Response.Redirect("Views/PainelCliente.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("Views/PainelProfissional.aspx");
+                        }
+                        
+                    }
+                    else
+                    {
+                        Response.Redirect("Views/CompletarCadastro.aspx");
+                    }
                 }
                 else
                 {
