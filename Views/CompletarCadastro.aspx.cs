@@ -129,7 +129,13 @@ public partial class Views_CompletarCadastro : System.Web.UI.Page
             
             banco.SetParametro("?USU_ESPECIALIDADE", _edEspecialidadePL.Text);
             banco.SetParametro("?USU_PROFISSAO", _ddlProfissaoPL.SelectedValue);
-            banco.SetParametro("?USU_REGISTRO_PROF", _edRegistro.Text);
+            banco.SetParametroNull("?USU_REGISTRO_PROF");
+        }
+        else
+        {
+            banco.SetParametroNull("?USU_ESPECIALIDADE");
+            banco.SetParametroNull("?USU_PROFISSAO");
+            banco.SetParametroNull("?USU_REGISTRO_PROF");
         }
 
         banco.SetParametro("?USU_NASC", DateTime.Parse(_edDataNascimento.Text));
