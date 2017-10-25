@@ -20,14 +20,14 @@
 
                     <div class="collapse navbar-collapse float-lg-right" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto ">
-                            <li class="nav-item active">
-                                <asp:HyperLink ID="_lkperfil" runat="server" CssClass="nav-link" NavigateUrl="~/Views/PainelCliente.aspx">Perfil</asp:HyperLink>
+                            <li class="nav-item">
+                                <asp:HyperLink ID="_lkHome" runat="server" CssClass="nav-link" NavigateUrl="~/Views/DashBoardCliente.aspx" Target="conteudo">Dashboard</asp:HyperLink>
                             </li>
                             <li class="nav-item">
-                                <asp:HyperLink ID="_lkRanking" runat="server" CssClass="nav-link" NavigateUrl="~/Views/PainelCliente.aspx">Ranking</asp:HyperLink>
+                                <asp:HyperLink ID="_lkperfil" runat="server" CssClass="nav-link" NavigateUrl="">Perfil</asp:HyperLink>
                             </li>
                             <li class="nav-item">
-                                <asp:HyperLink ID="_lkServicos" runat="server" CssClass="nav-link" NavigateUrl="~/Views/PainelCliente.aspx">Serviços</asp:HyperLink>
+                                <asp:LinkButton ID="_btnLogout" runat="server" CssClass="nav-link" OnClick="_btnLogout_Click">Sair</asp:LinkButton>
                             </li>
                         </ul>
                     </div>

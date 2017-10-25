@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DashBoardCliente.aspx.cs" Inherits="Views_DashBoardCliente" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DashBoardProfissional.aspx.cs" Inherits="Views_DashBoardCliente" %>
 
 <!DOCTYPE html>
 
@@ -42,15 +42,15 @@
                     </center>
                 </a>
 
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="CadastroServicos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
                     <center>
 
                     <div class=" box-dashboard bg-danger">
                         <p>
-                            <span class="icon-cart-plus texto-dashborad" style="font-size:150px;"></span>
+                            <span class="icon-attach texto-dashborad" style="font-size:150px;"></span>
                         </p>
                         <h3 class="texto-dashborad">
-                            Contratar Novo Serviço
+                            Serviços
                         </h3>
                     </div>
                     </center>
@@ -61,10 +61,10 @@
 
                     <div class=" box-dashboard bg-info">
                         <p>
-                            <span class="icon-list texto-dashborad" style="font-size:150px;"></span>
+                            <span class="icon-calendar-check-o texto-dashborad" style="font-size:150px;"></span>
                         </p>
                         <h3 class="texto-dashborad">
-                            Meus Contratos
+                            Agendamentos
                         </h3>
                     </div>
                     </center>
@@ -84,6 +84,19 @@
                     </center>
                 </a>
 
+                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                    <center>
+
+                    <div class=" box-dashboard bg-warning">
+                        <p>
+                            <span class="icon-money texto-dashborad" style="font-size:150px;"></span>
+                        </p>
+                        <h3 class="texto-dashborad">
+                            Finanças
+                        </h3>
+                    </div>
+                    </center>
+                </a>
                 
 
             </div>

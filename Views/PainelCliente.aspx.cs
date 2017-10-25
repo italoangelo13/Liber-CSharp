@@ -9,15 +9,23 @@ public partial class Views_PainelCliente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["autenticado"].ToString().Equals("N"))
-        {
-            Response.Redirect("../Index.aspx");
-        }
-
-        _lblNomeUsuario.Text = Session["nomeUsuario"].ToString().ToUpperInvariant();
+        
         if (!IsPostBack)
         {
-            
+            if (Session["autenticado"].ToString().Equals("N"))
+            {
+                Response.Redirect("../Index.aspx");
+            }
+
+            _lblNomeUsuario.Text = Session["nomeUsuario"].ToString();
         }
+    }
+    protected void _btnLogout_Click(object sender, EventArgs e)
+    {
+        Session["autenticado"] = "N";
+
+        Session.RemoveAll();
+
+        Response.Redirect("../Index.aspx");
     }
 }
