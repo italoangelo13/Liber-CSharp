@@ -26,6 +26,10 @@
                 <h5 class="col-12 col-lg-12 alert alert-success text-lg-right">Dashboard
                 </h5>
             </div>
+
+            <div class="row">
+
+            </div>
             <div class="row">
                 
                 <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
@@ -42,7 +46,7 @@
                     </center>
                 </a>
 
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="ContratoServicos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
                     <center>
 
                     <div class=" box-dashboard bg-danger">
@@ -50,7 +54,7 @@
                             <span class="icon-cart-plus texto-dashborad" style="font-size:150px;"></span>
                         </p>
                         <h3 class="texto-dashborad">
-                            Contratar Novo Serviço
+                            Serviços
                         </h3>
                     </div>
                     </center>
@@ -78,7 +82,7 @@
                             <span class="icon-star texto-dashborad" style="font-size:150px;"></span>
                         </p>
                         <h3 class="texto-dashborad">
-                            Avaliações
+                            Avaliar Serviços
                         </h3>
                     </div>
                     </center>

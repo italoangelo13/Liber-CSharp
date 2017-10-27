@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,12 +13,22 @@ public partial class Views_PainelCliente : System.Web.UI.Page
         
         if (!IsPostBack)
         {
-            if (Session["autenticado"].ToString().Equals("N"))
+            try
             {
+                if (Session["autenticado"].ToString().Equals("N"))
+                {
+                    Response.Redirect("../Index.aspx");
+                }
+
+                _lblNomeUsuario.Text = Session["nomeUsuario"].ToString().ToUpper();
+            }
+            catch
+            {
+                new ShowMenssage(this, "Sessão Expirada!", "Sua Sessão Expirou.");
+                Thread.Sleep(2000); 
                 Response.Redirect("../Index.aspx");
             }
-
-            _lblNomeUsuario.Text = Session["nomeUsuario"].ToString().ToUpper();
+            
         }
     }
     protected void _btnLogout_Click(object sender, EventArgs e)

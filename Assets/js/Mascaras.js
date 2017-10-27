@@ -163,6 +163,7 @@
         return v
     }
     
+    
     /*Validar hora*/
     function Verifica_Hora(campo){  
    

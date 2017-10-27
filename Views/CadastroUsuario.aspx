@@ -31,7 +31,7 @@
                 <div class="col-12 col-lg-12">
                     <fieldset>
                         <legend class="alert alert-success">Dados do Usuario</legend>
-                        <asp:Button ID="_btnSalvar" runat="server" Text="Salvar Informações" CssClass="btn btn-success btn-lg" ValidationGroup="_validacaoCampos" OnClick="_btnSalvar_Click" />
+                        
                         <asp:ValidationSummary ID="_boxValida" runat="server" ValidationGroup="_validacaoCampos" HeaderText="Campos Obrigatórios" ShowMessageBox="True" ShowSummary="False"/>
                         <div class="form-group form-row" style="margin-top: 10px;">
                             <div class="col-lg-6">
@@ -59,19 +59,7 @@
                         </div>
 
                         <div class="form-group form-row">
-                            <div class="col-lg-4">
-                                <p>
-                                    <asp:TextBox ID="_edSenha" runat="server" CssClass="form-control upper-case" TextMode="Password" Placeholder="Senha" title="Informe a sua senha!"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="_validSenha" runat="server" ErrorMessage="Campo de Senha é Obrigatório" ForeColor="#FF3300" SetFocusOnError="True" ValidationGroup="_validacaoCampos" ControlToValidate="_edSenha">*</asp:RequiredFieldValidator>
-                                </p>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <p>
-                                    <asp:TextBox ID="_edConfSenha" runat="server" CssClass="form-control upper-case" TextMode="Password" Placeholder="Confirmar Senha" title="Confirme a sua senha!"></asp:TextBox>
-                                    <asp:CompareValidator ID="_validConfirm" runat="server" ErrorMessage="Senhas Digitadas não Conferem." ControlToCompare="_edSenha" ControlToValidate="_edConfSenha" ForeColor="Red" SetFocusOnError="True" ValidationGroup="_validacaoCampos">*</asp:CompareValidator>
-                                </p>
-                            </div>
+                            
 
                             <div class="col-lg-2">
                                 <p>
@@ -166,6 +154,22 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div class="col-lg-4">
+                                <p>
+                                    <asp:TextBox ID="_edSenha" runat="server" CssClass="form-control upper-case" TextMode="Password" Placeholder="Senha" title="Informe a sua senha!"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="_validSenha" runat="server" ErrorMessage="Campo de Senha é Obrigatório" ForeColor="#FF3300" SetFocusOnError="True" ValidationGroup="_validacaoCampos" ControlToValidate="_edSenha">*</asp:RequiredFieldValidator>
+                                </p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <p>
+                                    <asp:TextBox ID="_edConfSenha" runat="server" CssClass="form-control upper-case" Placeholder="Confirmar Senha" title="Confirme a sua senha!"></asp:TextBox>
+                                    <asp:CompareValidator ID="_validConfirm" runat="server" ErrorMessage="Senhas Digitadas não Conferem." ControlToCompare="_edSenha" ControlToValidate="_edConfSenha" ForeColor="Red" SetFocusOnError="True" ValidationGroup="_validacaoCampos">*</asp:CompareValidator>
+                                </p>
+                            </div>
+                        </div>
+                        <asp:Button ID="_btnSalvar" runat="server" Text="Salvar Informações" CssClass="btn btn-success btn-lg col-lg-4" ValidationGroup="_validacaoCampos" OnClick="_btnSalvar_Click" />
                     </asp:Panel>
                 </div>
             </div>
@@ -176,6 +180,9 @@
 
         </div>
     </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="../Assets/js/bootstrap.min.js"></script>
+   
 </body>
 </html>
