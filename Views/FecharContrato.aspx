@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BuscarServicos.aspx.cs" Inherits="Views_BuscarServicos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FecharContrato.aspx.cs" Inherits="Views_BuscarServicos" %>
 
 <!DOCTYPE html>
 

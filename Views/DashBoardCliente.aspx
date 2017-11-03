@@ -14,8 +14,8 @@
             height: 300px;
         }
 
-        .texto-dashborad{
-            color:#fff;
+        .texto-dashborad {
+            color: #fff;
         }
     </style>
 </head>
@@ -27,12 +27,10 @@
                 </h5>
             </div>
 
+            
             <div class="row">
 
-            </div>
-            <div class="row">
-                
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
                     <center>
 
                     <div class=" box-dashboard bg-success">
@@ -46,7 +44,7 @@
                     </center>
                 </a>
 
-                <a href="ContratoServicos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="ContratoServicos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
                     <center>
 
                     <div class=" box-dashboard bg-danger">
@@ -60,7 +58,7 @@
                     </center>
                 </a>
 
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
                     <center>
 
                     <div class=" box-dashboard bg-info">
@@ -74,7 +72,7 @@
                     </center>
                 </a>
 
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
                     <center>
 
                     <div class=" box-dashboard bg-dark">
@@ -88,7 +86,20 @@
                     </center>
                 </a>
 
-                
+                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
+                    <center>
+
+                    <div class=" box-dashboard bg-warning">
+                        <p>
+                            <span class="icon-wrench texto-dashborad" style="font-size:150px;"></span>
+                        </p>
+                        <h3 class="texto-dashborad">
+                            Profissionais
+                        </h3>
+                    </div>
+                    </center>
+                </a>
+
 
             </div>
         </div>

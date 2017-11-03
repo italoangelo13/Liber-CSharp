@@ -98,7 +98,7 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
             banco.SetParametro("?SER_DESCRICAO", _edDescricao.Text.ToUpper());
             banco.SetParametro("?SER_MEDIDA", _ddlMedida.SelectedValue);
             banco.SetParametro("?SER_TEMPO", _edTempo.Text.ToUpper());
-            banco.SetParametro("?SER_PRECO",Double.Parse(_edValor.Text));
+            banco.SetParametro("?SER_PRECO", _edValor.Text.Replace(".", "").Replace(",", "."));
             banco.SetParametro("?SER_CATEGORIA", _ddlCategoria.SelectedValue);
             try
             {
@@ -117,14 +117,14 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
             string query = @"UPDATE SERVICO SET   SER_NOME = ?SER_NOME,
                                                   SER_DESCRICAO = ?SER_DESCRICAO,
                                                   SER_PRECO = ?SER_PRECO,
-                                                  SER_CATEGORIA = ?SER_CATEGORIA
+                                                  SER_CATEGORIA = ?SER_CATEGORIA,
                                                   SER_TEMPO = ?SER_TEMPO,
-                                                  SER_MEDIDA = ?SER_MEDIDA,
+                                                  SER_MEDIDA = ?SER_MEDIDA
                                                   WHERE SER_CODIGO_ID = ?SER_CODIGO_ID";
             banco.Query(query);
             banco.SetParametro("?SER_NOME", _edNome.Text.ToUpper());
             banco.SetParametro("?SER_DESCRICAO", _edDescricao.Text.ToUpper());
-            banco.SetParametro("?SER_PRECO", Double.Parse(_edValor.Text));
+            banco.SetParametro("?SER_PRECO", _edValor.Text.Replace(".","").Replace(",","."));
             banco.SetParametro("?SER_CATEGORIA", _ddlCategoria.SelectedValue);
             banco.SetParametro("?SER_CODIGO_ID", _edcodServico.Text);
             banco.SetParametro("?SER_MEDIDA", _ddlMedida.SelectedValue);

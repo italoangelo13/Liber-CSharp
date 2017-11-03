@@ -29,29 +29,8 @@ public partial class Views_CadastroUsuario : System.Web.UI.Page
     }
 
 
-    protected void atualizaCidade(string uf)
-    {
-        banco.Query("SELECT MUN_CODIGO_IBGE, MUN_NOME FROM municipio WHERE MUN_UF = '" +uf+"'");
-        _ddlCidade.DataSource = banco.ExecutarDataTable();
-        _ddlCidade.DataTextField = "MUN_NOME";
-        _ddlCidade.DataValueField = "MUN_CODIGO_IBGE";
-        _ddlCidade.DataBind();
-        _ddlCidade.Items.Insert(0, new ListItem("Selecione uma Cidade", "0"));
-    }
-    protected void _ddlUF_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (_ddlUF.SelectedIndex == 0)
-        {
-            _ddlCidade.Enabled = false;
-            _ddlCidade.Items.Clear();
-            _ddlCidade.Items.Insert(0, new ListItem("Selecione uma Cidade", "0"));
-        }
-        else
-        {
-            _ddlCidade.Enabled = true;
-            atualizaCidade(_ddlUF.SelectedValue);
-        }
-    }
+    
+    
     protected void _btnSalvar_Click(object sender, EventArgs e)
     {
         if (_ddlUF.SelectedIndex == 0)
@@ -61,10 +40,10 @@ public partial class Views_CadastroUsuario : System.Web.UI.Page
             return;
         }
 
-        if (_ddlCidade.SelectedIndex == 0)
+        if (String.IsNullOrEmpty(_edCidade.Text))
         {
             new ShowMenssage(this, "Campo Obrigatório", "Informe a sua Cidade.");
-            _ddlCidade.Focus();
+            _edCidade.Focus();
             return;
         }
 
@@ -129,7 +108,7 @@ public partial class Views_CadastroUsuario : System.Web.UI.Page
 
         banco.SetParametro("?USU_NUM_ENDERECO", _edNumero.Text);
         banco.SetParametro("?USU_BAIRRO", _edBairro.Text);
-        banco.SetParametro("?USU_CIDADE", _ddlCidade.SelectedValue);
+        banco.SetParametro("?USU_CIDADE", _edIbge.Text);
         banco.SetParametro("?USU_UF", _ddlUF.SelectedValue);
         banco.SetParametro("?USU_CPF", _edCPF.Text);
         banco.SetParametro("?USU_LOGIN", _edLogin.Text);
@@ -142,14 +121,16 @@ public partial class Views_CadastroUsuario : System.Web.UI.Page
         try
         {
             banco.Executar();
+            Thread.Sleep(5000);
             new ShowMenssage(this, "Cadastro Realizado com sucesso.", "Aguarde alguns instantes para acessar sua conta.");
             
             Response.Redirect("../index.aspx");
-            Thread.Sleep(5000);
+            
         }
         catch(Exception ex)
         {
             new ShowMenssage(this, "Erro ao Cadastrar - " + ex.Message, "Não foi Possivel Realizar o Cadastro, Tente Novamente");
+            return;
         }
     }
 }
