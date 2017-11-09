@@ -16,11 +16,11 @@
     <form id="form1" runat="server">
         <div class="container-fluid">
             <div class="row">
-                <h5 class="alert alert-dark col-12 col-lg-12 text-lg-right">Cadastro de Serviços</h5>
+                <h5 class="alert alert-dark col-sm-12 col-lg-12 text-lg-right">Cadastro de Serviços</h5>
             </div>
 
             <asp:Panel ID="_pnlInicial" runat="server" CssClass="row">
-                <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
+                <div class="col-sm-12 col-lg-12" style="margin-bottom: 10px;">
 
                     <div class="form-group form-row" style="margin-top: 10px;">
                         <div class="col-lg-2" style="text-align: right;">
@@ -86,17 +86,6 @@
                                 <asp:TextBox ID="_edValor" runat="server" CssClass="form-control upper-case" TextMode="SingleLine" Placeholder="Qual é o Valor?" Enabled="true" Height="50px"></asp:TextBox>
                             </p>
                         </div>
-
-                        <div class="col-lg-2">
-                            <p>
-                                <asp:DropDownList ID="_ddlMedida" runat="server" CssClass="form-control" Height="50px">
-                                    <asp:ListItem Value="PH">Por Hora</asp:ListItem>
-                                    <asp:ListItem Selected="True" Value="PS">Por Serviço Prestado</asp:ListItem>
-                                    <asp:ListItem Value="PD">Por Dia</asp:ListItem>
-                                    <asp:ListItem Value="PM">Por Mês</asp:ListItem>
-                                </asp:DropDownList>
-                            </p>
-                        </div>
                     </div>
 
                     <div class="form-group form-row" style="margin-top: 10px;">
@@ -120,7 +109,7 @@
             </asp:Panel>
 
             <asp:Panel ID="_pnlRegistros" runat="server" CssClass="row">
-                <div class="col-12 col-lg-12">
+                <div class="col-sm-12 col-lg-12">
                     <h4 style="text-align: center" class="alert alert-warning">Meus Serviços</h4>
                     <asp:GridView ID="_gridServicos" runat="server" CssClass="table table-striped table-responsive" Width="100%" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" EmptyDataText="NENHUM SERVIÇO REGISTRADO." ForeColor="Black" GridLines="Horizontal" OnRowDeleting="_gridServicos_RowDeleting" OnSelectedIndexChanged="_gridServicos_SelectedIndexChanged">
                         <Columns>

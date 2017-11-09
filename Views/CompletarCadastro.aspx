@@ -39,7 +39,8 @@
                             <p>
                                 <asp:Label ID="Label1" runat="server" Text="Data de Nascimento"></asp:Label>
                                 <asp:TextBox ID="_edDataNascimento" runat="server" CssClass="form-control upper-case" Placeholder="Data de Nascimento" onKeydown="Mascara(this,Data);"></asp:TextBox>
-                                <asp:CalendarExtender ID="_edDataNascimentoCalendarExtender1" runat="server" TargetControlID="_edDataNascimento" />
+                                <asp:CalendarExtender ID="_edDataNascimento_CalendarExtender" runat="server" Format="dd/MM/yyyy" TargetControlID="_edDataNascimento" TodaysDateFormat="dd/MM/yyyy"></asp:CalendarExtender>
+                                <asp:MaskedEditExtender ID="_edDataNascimento_MaskedEditExtender" runat="server" ClearMaskOnLostFocus="False" Mask="99/99/9999" MaskType="Date" TargetControlID="_edDataNascimento"></asp:MaskedEditExtender>
                             </p>
                         </div>
                     </div>

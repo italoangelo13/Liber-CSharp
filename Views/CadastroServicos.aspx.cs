@@ -81,7 +81,6 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
                                                   SER_PRECO,
                                                   SER_DATA_CADASTRO,
                                                   SER_TEMPO,
-                                                  SER_MEDIDA,
                                                   SER_CATEGORIA)
                                             VALUES(
                                                   ?SER_NOME,
@@ -90,13 +89,11 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
                                                   ?SER_PRECO,
                                                   CURRENT_TIMESTAMP,
                                                   ?SER_TEMPO,
-                                                  ?SER_MEDIDA,
                                                   ?SER_CATEGORIA)";
             banco.Query(query);
             banco.SetParametro("?SER_NOME", _edNome.Text.ToUpper());
             banco.SetParametro("?SER_CODIGO_USUARIO", Session["codUsuario"].ToString());
             banco.SetParametro("?SER_DESCRICAO", _edDescricao.Text.ToUpper());
-            banco.SetParametro("?SER_MEDIDA", _ddlMedida.SelectedValue);
             banco.SetParametro("?SER_TEMPO", _edTempo.Text.ToUpper());
             banco.SetParametro("?SER_PRECO", _edValor.Text.Replace(".", "").Replace(",", "."));
             banco.SetParametro("?SER_CATEGORIA", _ddlCategoria.SelectedValue);
@@ -118,8 +115,7 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
                                                   SER_DESCRICAO = ?SER_DESCRICAO,
                                                   SER_PRECO = ?SER_PRECO,
                                                   SER_CATEGORIA = ?SER_CATEGORIA,
-                                                  SER_TEMPO = ?SER_TEMPO,
-                                                  SER_MEDIDA = ?SER_MEDIDA
+                                                  SER_TEMPO = ?SER_TEMPO
                                                   WHERE SER_CODIGO_ID = ?SER_CODIGO_ID";
             banco.Query(query);
             banco.SetParametro("?SER_NOME", _edNome.Text.ToUpper());
@@ -127,7 +123,6 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
             banco.SetParametro("?SER_PRECO", _edValor.Text.Replace(".","").Replace(",","."));
             banco.SetParametro("?SER_CATEGORIA", _ddlCategoria.SelectedValue);
             banco.SetParametro("?SER_CODIGO_ID", _edcodServico.Text);
-            banco.SetParametro("?SER_MEDIDA", _ddlMedida.SelectedValue);
             banco.SetParametro("?SER_TEMPO", _edTempo.Text.ToUpper());
             try
             {
@@ -153,7 +148,6 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
         _edValor.Text = "";
         _edDescricao.Text = "";
         _edTempo.Text = "";
-        _ddlMedida.SelectedValue = "PS";
         atualizaGridServico();
     }
 
@@ -199,7 +193,7 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
                             SER_NOME,
                             SER_DESCRICAO, 
                             SER_PRECO,
-                            SER_TEMPO, SER_MEDIDA,
+                            SER_TEMPO,
                             SER_CATEGORIA FROM servico where SER_CODIGO_ID = ?SER_CODIGO_ID");
         banco.SetParametro("?SER_CODIGO_ID",_edcodServico.Text);
         DataTable dt = banco.ExecutarDataTable();
@@ -209,7 +203,6 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
             _edNome.Text = dt.Rows[0]["SER_NOME"].ToString();
             _edValor.Text = dt.Rows[0]["SER_PRECO"].ToString();
             _ddlCategoria.SelectedValue = dt.Rows[0]["SER_CATEGORIA"].ToString();
-            _ddlMedida.SelectedValue = dt.Rows[0]["SER_MEDIDA"].ToString();
             _edTempo.Text = dt.Rows[0]["SER_TEMPO"].ToString();
         }
     }

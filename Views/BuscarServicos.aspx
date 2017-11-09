@@ -1,5 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ContratoServicos.aspx.cs" Inherits="Views_ContratoServicos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BuscarServicos.aspx.cs" Inherits="Views_ContratoServicos" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,29 +12,34 @@
             margin-bottom: 5px;
             margin-top: 5px;
         }
+
         .auto-style1 {
             width: 119px;
         }
+
         .auto-style2 {
             width: 161px;
         }
+
         .auto-style3 {
             width: 105px;
         }
     </style>
 </head>
 <body>
+
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true"></asp:ScriptManager>
         <asp:Panel ID="_pnlPrincipal" runat="server" CssClass="container-fluid">
             <div class="row">
-                <h4 class="col-12 col-lg-12 alert alert-dark text-lg-right">Serviços</h4>
+                <h4 class="col-sm-12 col-lg-12 alert alert-dark text-lg-right">Serviços</h4>
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12 col-lg-12">
                     <h5>Critérios De Busca</h5>
                     <hr />
-                    <table class="table-responsive" style="width:100%">
+                    <table class="table-responsive" style="width: 100%">
                         <tr>
                             <td class="auto-style1">
                                 <asp:Label ID="Label1" runat="server" Text="Pesquisar por:"></asp:Label>
@@ -82,7 +88,7 @@
                             <asp:BoundField DataField="SER_PRECO" DataFormatString="{0:c}" HeaderText="Valor" SortExpression="SER_PRECO" />
                             <asp:BoundField DataField="USU_NOME" HeaderText="Profissional" SortExpression="USU_NOME" />
                             <asp:BoundField DataField="CAT_NOME" HeaderText="Categoria" SortExpression="CAT_NOME" />
-                            <asp:CommandField HeaderText="Contratar" ShowSelectButton="True" ButtonType="Image" SelectImageUrl="~/Assets/img/contrato.png">
+                            <asp:CommandField HeaderText="Contratar" ShowSelectButton="True" SelectImageUrl="~/Assets/img/contrato.png" SelectText="Contratar">
                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                             </asp:CommandField>
@@ -101,16 +107,69 @@
                 </div>
 
             </div>
-            </asp:Panel>
+        </asp:Panel>
+
 
         <asp:Panel ID="_pnlContrato" runat="server" CssClass="container-fluid" Visible="False">
-            <div class="row">
-                <h4 class="col-12 col-lg-12 alert alert-dark text-lg-right">Serviços</h4>
+            <div class="row alert alert-dark">
+                <h6 class="col-sm-12 col-lg-10 ">Informações do Serviços</h6>
+                <asp:Button ID="_btnVoltar" runat="server" Text="Fechar" CssClass="col-sm-12 col-lg-2 btn btn-danger" />
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
-                                       
+                <div class="col-sm-12 col-lg-12">
+                    <div class="form-row">
+                        <div class="form-group col-lg-1">
+                            <label for="_edCodServico">Código</label>
+                            <asp:TextBox ID="_edCodServico" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="_edNomeServico">Serviço</label>
+                            <asp:TextBox ID="_edNomeServico" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group col-lg-2">
+                            <label for="_edValorServico">Valor</label>
+                            <asp:TextBox ID="_edValorServico" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group col-lg-2">
+                            <label for="_edCategoria">Categoria</label>
+                            <asp:TextBox ID="_edCategoria" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="_tempoServico">Tempo de Execução</label>
+                            <asp:TextBox ID="_tempoServico" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-7">
+                            <label for="_edDescricaoServico">Descrição</label>
+                            <asp:TextBox ID="_edDescricaoServico" runat="server" CssClass="form-control" Height="50px" TextMode="MultiLine" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="_edProfissionalservico">Profissional</label>
+                            <asp:TextBox ID="_edProfissionalservico" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <div class="form-group col-lg-1">
+                            <label for="_edPontuacao">Pontuação</label>
+                            <asp:TextBox ID="_edPontuacao" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-2">
+                            <label for="_edData">Data</label>
+                            <asp:TextBox ID="_edData" runat="server" CssClass="form-control" MaxLength="10" onblur="" onkeydown="Mascara(this,Data);"></asp:TextBox>
+                            <asp:CalendarExtender ID="_edData_CalendarExtender" runat="server" Format="dd/MM/yyyy" TargetControlID="_edData" TodaysDateFormat="dd/MM/yyyy"></asp:CalendarExtender>
+                                <asp:MaskedEditExtender ID="_edData_MaskedEditExtender" runat="server" ClearMaskOnLostFocus="False" Mask="99/99/9999" MaskType="Date" TargetControlID="_edData"></asp:MaskedEditExtender>
+                        </div>
+                        <div class="form-group col-lg-1">
+                            <label for="_edHora">Horario</label>
+                            <asp:TextBox ID="_edHora" runat="server" CssClass="form-control" onkeydown="Mascara(this,Hora);" MaxLength="5"></asp:TextBox>
+                        </div>
+                    </div>
                 </div>
             </div>
         </asp:Panel>

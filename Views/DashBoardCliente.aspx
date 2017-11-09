@@ -44,7 +44,7 @@
                     </center>
                 </a>
 
-                <a href="ContratoServicos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
+                <a href="BuscarServicos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
                     <center>
 
                     <div class=" box-dashboard bg-danger">

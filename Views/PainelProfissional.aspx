@@ -24,7 +24,7 @@
                                 <asp:HyperLink ID="_lkperfil" runat="server" CssClass="nav-link" NavigateUrl="~/Views/DashBoardProfissional.aspx" Target="conteudo">Dashboard</asp:HyperLink>
                             </li>
                             <li class="nav-item">
-                                <asp:HyperLink ID="_lkRanking" runat="server" CssClass="nav-link" NavigateUrl="">Perfil</asp:HyperLink>
+                                <asp:HyperLink ID="_lkRanking" runat="server" CssClass="nav-link" NavigateUrl="PerfilProfissional.aspx" Target="conteudo">Perfil</asp:HyperLink>
                             </li>
                             <li class="nav-item">
                                 <asp:LinkButton ID="_btnLogout" runat="server" CssClass="nav-link" OnClick="_btnLogout_Click">Sair</asp:LinkButton>

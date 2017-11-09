@@ -57,6 +57,25 @@ public partial class Views_CadastroUsuario : System.Web.UI.Page
             return;
         }
 
+        int codigoIBGE = 0;
+        // ------ Verifica se o codigo do ibge foi informado ----//
+        if (String.IsNullOrEmpty(_edIbge.Text))
+        {
+            banco.Query(@"SELECT MUN_CODIGO_IBGE FROM municipio where MUN_NOME = '" + _edCidade.Text.ToUpper() + "'");
+            DataTable dt2 = banco.ExecutarDataTable();
+            if (dt2.Rows.Count > 0)
+            {
+                codigoIBGE = int.Parse(dt2.Rows[0]["MUN_CODIGO_IBGE"].ToString());
+            }
+            else
+            {
+                codigoIBGE = 0;
+            }
+        }
+        else
+        {
+            codigoIBGE = int.Parse(_edIbge.Text);
+        }
 
 
         //----- Caadstrando Usuário ----//
@@ -108,7 +127,7 @@ public partial class Views_CadastroUsuario : System.Web.UI.Page
 
         banco.SetParametro("?USU_NUM_ENDERECO", _edNumero.Text);
         banco.SetParametro("?USU_BAIRRO", _edBairro.Text);
-        banco.SetParametro("?USU_CIDADE", _edIbge.Text);
+        banco.SetParametro("?USU_CIDADE", codigoIBGE);
         banco.SetParametro("?USU_UF", _ddlUF.SelectedValue);
         banco.SetParametro("?USU_CPF", _edCPF.Text);
         banco.SetParametro("?USU_LOGIN", _edLogin.Text);

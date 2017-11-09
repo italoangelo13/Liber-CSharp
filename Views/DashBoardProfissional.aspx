@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="PerfilProfissional.aspx" target="conteudo" class="col-sm-12 col-lg-3" style="text-decoration:none;">
                     <center>
 
                     <div class=" box-dashboard bg-success">
@@ -69,36 +69,7 @@
                     </div>
                     </center>
                 </a>
-
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
-                    <center>
-
-                    <div class=" box-dashboard bg-dark">
-                        <p>
-                            <span class="icon-star texto-dashborad" style="font-size:150px;"></span>
-                        </p>
-                        <h3 class="texto-dashborad">
-                            Avaliações
-                        </h3>
-                    </div>
-                    </center>
-                </a>
-
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
-                    <center>
-
-                    <div class=" box-dashboard bg-warning">
-                        <p>
-                            <span class="icon-money texto-dashborad" style="font-size:150px;"></span>
-                        </p>
-                        <h3 class="texto-dashborad">
-                            Finanças
-                        </h3>
-                    </div>
-                    </center>
-                </a>
-                
-
+                   
             </div>
         </div>
     </form>

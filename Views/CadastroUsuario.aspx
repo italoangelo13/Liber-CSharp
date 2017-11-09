@@ -19,7 +19,7 @@
     <form id="form1" runat="server">
         <div class="container-fluid">
             <div class="row">
-                <div class="jumbotron jumbotron-fluid col-12">
+                <div class="jumbotron jumbotron-fluid col-sm-12">
                     <div class="container">
                         <h1 class="display-3">Cadastre-se no Liber</h1>
                         <p class="lead">Faça seu cadastro em poucos minutos e entre para a comunidade Liber</p>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-12">
+                <div class="col-sm-12 col-lg-12">
                     <fieldset>
                         <legend class="alert alert-success">Dados do Usuario</legend>
 
@@ -82,7 +82,7 @@
 
                             <div class="col-lg-4">
                                 <p>
-                                    <asp:TextBox ID="_edConfSenha" runat="server" CssClass="form-control upper-case" Placeholder="Confirmar Senha" title="Confirme a sua senha!"></asp:TextBox>
+                                    <asp:TextBox ID="_edConfSenha" runat="server" CssClass="form-control upper-case" Placeholder="Confirmar Senha" title="Confirme a sua senha!" TextMode="Password"></asp:TextBox>
                                     <asp:CompareValidator ID="_validConfirm" runat="server" ErrorMessage="Senhas Digitadas não Conferem." ControlToCompare="_edSenha" ControlToValidate="_edConfSenha" ForeColor="Red" SetFocusOnError="True" ValidationGroup="_validacaoCampos">*</asp:CompareValidator>
                                 </p>
                             </div>
@@ -92,7 +92,7 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-12">
+                <div class="col-sm-12 col-lg-12">
                     <div class="form-group form-row">
                         <div class="col-lg-12">
                             <p>
@@ -111,7 +111,7 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-12">
+                <div class="col-sm-12 col-lg-12">
                     <asp:Panel ID="_pnlCliente" runat="server" CssClass="form-group">
                         <div class="form-row">
                             <div class="col-lg-2">
@@ -136,13 +136,13 @@
 
                             <div class="col-lg-4">
                                 <p>
-                                    <asp:TextBox ID="_edCidade" runat="server" CssClass="form-control upper-case" Placeholder="Cidade" title="Informe o seu Cep!"></asp:TextBox>
+                                    <asp:TextBox ID="_edCidade" runat="server" CssClass="form-control upper-case" Placeholder="Cidade" title="Informe o sua Cidade!"></asp:TextBox>
                                 </p>
                             </div>
 
                             <div class="col-lg-1">
                                 <p>
-                                    <asp:TextBox ID="_edIbge" runat="server" CssClass="form-control upper-case" Placeholder="IBGE" title="Informe o seu Cep!" Visible="false"></asp:TextBox>
+                                    <asp:TextBox ID="_edIbge" runat="server" CssClass="form-control upper-case" Placeholder="IBGE"  Visible="false"></asp:TextBox>
                                 </p>
                             </div>
                         </div>

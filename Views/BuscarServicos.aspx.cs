@@ -119,5 +119,32 @@ public partial class Views_ContratoServicos : System.Web.UI.Page
     {
         _pnlContrato.Visible = true;
         _pnlPrincipal.Visible = false;
+        String codigo;
+        codigo = _Gridservicos.SelectedRow.Cells[1].Text;
+        _edCodServico.Text = codigo;
+        banco.Query(@"SELECT SER_CODIGO_ID,
+                                SER_NOME,
+                                USU_NOME,
+                                SER_DESCRICAO,
+                                SER_PRECO,
+                                SER_PONTUACAO,
+                                CAT_NOME,
+                                SER_TEMPO
+                              FROM servico
+                              INNER JOIN categoriaservico ON SER_CATEGORIA = CAT_CODIGO_ID
+                              INNER JOIN usuario ON SER_CODIGO_USUARIO = USU_CODIGO_ID
+                              where SER_CODIGO_ID = ?SER_CODIGO_ID");
+        banco.SetParametro("?SER_CODIGO_ID", codigo);
+        DataTable servico = banco.ExecutarDataTable();
+        if (servico.Rows.Count > 0)
+        {
+            _edNomeServico.Text = servico.Rows[0]["SER_NOME"].ToString().ToUpper();
+            _edProfissionalservico.Text = servico.Rows[0]["USU_NOME"].ToString().ToUpper();
+            _edDescricaoServico.Text = servico.Rows[0]["SER_DESCRICAO"].ToString().ToUpper();
+            _edValorServico.Text = servico.Rows[0]["SER_PRECO"].ToString().ToUpper();
+            _edPontuacao.Text = servico.Rows[0]["SER_PONTUACAO"].ToString().ToUpper();
+            _edCategoria.Text = servico.Rows[0]["CAT_NOME"].ToString().ToUpper();
+            _tempoServico.Text = servico.Rows[0]["SER_TEMPO"].ToString().ToUpper();
+        }
     }
 }
