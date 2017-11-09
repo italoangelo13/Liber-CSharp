@@ -117,6 +117,7 @@ public partial class Views_ContratoServicos : System.Web.UI.Page
     }
     protected void _Gridservicos_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+        _pnlContrato.Visible = true;
+        _pnlPrincipal.Visible = false;
     }
 }
