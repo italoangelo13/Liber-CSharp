@@ -88,7 +88,7 @@
                             <asp:BoundField DataField="SER_PRECO" DataFormatString="{0:c}" HeaderText="Valor" SortExpression="SER_PRECO" />
                             <asp:BoundField DataField="USU_NOME" HeaderText="Profissional" SortExpression="USU_NOME" />
                             <asp:BoundField DataField="CAT_NOME" HeaderText="Categoria" SortExpression="CAT_NOME" />
-                            <asp:CommandField HeaderText="Contratar" ShowSelectButton="True" SelectImageUrl="~/Assets/img/contrato.png" SelectText="Contratar">
+                            <asp:CommandField HeaderText="Contratar" ShowSelectButton="True" SelectImageUrl="~/Assets/img/contrato.png" SelectText="Contratar" ButtonType="Image">
                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                             </asp:CommandField>
@@ -178,6 +178,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="../Assets/js/bootstrap.min.js"></script>
     <script src="../Assets/js/Mascaras.js"></script>
+    <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js">
+</script>
 
 </body>
 </html>
