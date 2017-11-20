@@ -58,7 +58,7 @@
                     </center>
                 </a>
 
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
+                <a href="ListaContratos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
                     <center>
 
                     <div class=" box-dashboard bg-info">
@@ -67,34 +67,6 @@
                         </p>
                         <h3 class="texto-dashborad">
                             Meus Contratos
-                        </h3>
-                    </div>
-                    </center>
-                </a>
-
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
-                    <center>
-
-                    <div class=" box-dashboard bg-dark">
-                        <p>
-                            <span class="icon-star texto-dashborad" style="font-size:150px;"></span>
-                        </p>
-                        <h3 class="texto-dashborad">
-                            Avaliar Serviços
-                        </h3>
-                    </div>
-                    </center>
-                </a>
-
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration: none;">
-                    <center>
-
-                    <div class=" box-dashboard bg-warning">
-                        <p>
-                            <span class="icon-wrench texto-dashborad" style="font-size:150px;"></span>
-                        </p>
-                        <h3 class="texto-dashborad">
-                            Profissionais
                         </h3>
                     </div>
                     </center>

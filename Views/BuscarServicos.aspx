@@ -113,7 +113,7 @@
         <asp:Panel ID="_pnlContrato" runat="server" CssClass="container-fluid" Visible="False">
             <div class="row alert alert-dark">
                 <h6 class="col-sm-12 col-lg-10 ">Informações do Serviços</h6>
-                <asp:Button ID="_btnVoltar" runat="server" Text="Fechar" CssClass="col-sm-12 col-lg-2 btn btn-danger" />
+                <asp:Button ID="_btnVoltar" runat="server" Text="Fechar" CssClass="col-sm-12 col-lg-2 btn btn-danger" OnClick="_btnVoltar_Click" />
             </div>
 
             <div class="row">
@@ -149,11 +149,11 @@
                             <asp:TextBox ID="_edDescricaoServico" runat="server" CssClass="form-control" Height="50px" TextMode="MultiLine" ReadOnly="true"></asp:TextBox>
                         </div>
                         <div class="form-group col-lg-3">
-                            <label for="_edProfissionalservico">Profissional</label>
+                            <label for="_edProfissionalservico">Profissional  - <asp:Label ID="_lblCodProf" runat="server" Text=""></asp:Label></label>
                             <asp:TextBox ID="_edProfissionalservico" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                         </div>
                         <div class="form-group col-lg-1">
-                            <label for="_edPontuacao">Pontuação</label>
+                            <label for="_edPontuacao">Pontuação</label> 
                             <asp:TextBox ID="_edPontuacao" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
@@ -162,12 +162,18 @@
                         <div class="form-group col-lg-2">
                             <label for="_edData">Data</label>
                             <asp:TextBox ID="_edData" runat="server" CssClass="form-control" MaxLength="10" onblur="" onkeydown="Mascara(this,Data);"></asp:TextBox>
-                            <asp:CalendarExtender ID="_edData_CalendarExtender" runat="server" Format="dd/MM/yyyy" TargetControlID="_edData" TodaysDateFormat="dd/MM/yyyy"></asp:CalendarExtender>
-                                <asp:MaskedEditExtender ID="_edData_MaskedEditExtender" runat="server" ClearMaskOnLostFocus="False" Mask="99/99/9999" MaskType="Date" TargetControlID="_edData"></asp:MaskedEditExtender>
+                            
                         </div>
                         <div class="form-group col-lg-1">
                             <label for="_edHora">Horario</label>
                             <asp:TextBox ID="_edHora" runat="server" CssClass="form-control" onkeydown="Mascara(this,Hora);" MaxLength="5"></asp:TextBox>
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-3">
+                            <asp:Button ID="_btnSalvar" runat="server" Text="Marcar Horario" CssClass="btn btn-success btn-block" OnClick="_btnSalvar_Click" />
                         </div>
                     </div>
                 </div>
@@ -178,8 +184,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="../Assets/js/bootstrap.min.js"></script>
     <script src="../Assets/js/Mascaras.js"></script>
-    <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js">
-</script>
+    </script>
 
 </body>
 </html>
