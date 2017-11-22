@@ -97,6 +97,8 @@
         v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2") 
         return v
     }
+
+    
     
     /*Função que padroniza CEP*/
     function Cep(v){

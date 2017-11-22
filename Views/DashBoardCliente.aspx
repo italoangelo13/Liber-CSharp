@@ -37,9 +37,9 @@
                         <p>
                             <span class="icon-user texto-dashborad" style="font-size:150px;"></span>
                         </p>
-                        <h3 class="texto-dashborad">
+                        <h5 class="texto-dashborad">
                             Perfil
-                        </h3>
+                        </h5>
                     </div>
                     </center>
                 </a>
@@ -51,9 +51,9 @@
                         <p>
                             <span class="icon-cart-plus texto-dashborad" style="font-size:150px;"></span>
                         </p>
-                        <h3 class="texto-dashborad">
+                        <h5 class="texto-dashborad">
                             Serviços
-                        </h3>
+                        </h5>
                     </div>
                     </center>
                 </a>
@@ -65,9 +65,9 @@
                         <p>
                             <span class="icon-list texto-dashborad" style="font-size:150px;"></span>
                         </p>
-                        <h3 class="texto-dashborad">
-                            Meus Contratos
-                        </h3>
+                        <h5 class="texto-dashborad">
+                            Solicitações e Pagamentos
+                        </h5>
                     </div>
                     </center>
                 </a>

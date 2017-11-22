@@ -56,7 +56,7 @@
                     </center>
                 </a>
 
-                <a href="" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
+                <a href="Agendamentos.aspx" target="conteudo" class="col-12 col-lg-3" style="text-decoration:none;">
                     <center>
 
                     <div class=" box-dashboard bg-info">

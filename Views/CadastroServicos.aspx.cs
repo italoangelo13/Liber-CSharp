@@ -12,8 +12,14 @@ public partial class Views_CadastroServicos : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["autenticado"].ToString().Equals("N"))
+        {
+            Response.Redirect("../Index.aspx");
+        }
+
         if (!IsPostBack)
         {
+            
             atualizaCategoria();
             atualizaGridServico();
         }
